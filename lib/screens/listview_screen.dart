@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_for_college/models/student_model.dart';
+import 'package:flutter_for_college/widgets/listview_widget.dart';
 import 'output_screen.dart';
 
 class ListViewScreen extends StatefulWidget {
@@ -14,6 +16,8 @@ class _ListViewScreenState extends State<ListViewScreen> {
   final _lnameController = TextEditingController();
 
   String? _selectedCity;
+
+  final List<StudentModel> _lststudents = [];
 
   // To display list of cities in dropdown
   final List<DropdownMenuItem<String>> _cities = [
@@ -113,6 +117,15 @@ class _ListViewScreenState extends State<ListViewScreen> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           //Add student code goes here
+                          StudentModel student = StudentModel(
+                            fname: _fnameController.text,
+                            lname: _lnameController.text,
+                            city: _selectedCity!,
+                             );
+                        
+                        setState(() {
+                          _lststudents.add(student);
+                        });
                         }
                       },
                       icon: const Icon(Icons.add),
@@ -134,7 +147,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const OutputScreen(),
+                            builder: (context) => OutputScreen(lstStudents: _lststudents),
                           ),
                         );
                       },
@@ -153,11 +166,16 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 ],
               ),
               const SizedBox(height: 40),
+              if(_lststudents.isNotEmpty)...{
+                ListviewWidget(lstStudents: _lststudents),
+              }else ...{
               Text(
                 "No Data",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 24, color: Colors.grey.shade400),
               ),
+
+              }
             ],
           ),
         ),

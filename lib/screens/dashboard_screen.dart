@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_for_college/screens/employee_details_screen.dart';
 import 'listview_screen.dart';
 import 'gridview_screen.dart';
 import 'cardview_screen.dart';
@@ -118,6 +119,24 @@ class DashboardScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => const StackLayoutScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      _buildDashboardCard(
+                        context,
+                        title: 'Employee Details',
+                        subtitle: 'ID, Full name, Gender, Department',
+                        icon: Icons.workspace_premium_rounded,
+                        gradient: LinearGradient(
+                          colors: [const Color.fromARGB(255, 236, 64, 222), const Color.fromARGB(255, 216, 27, 27)],
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const EmployeeDetailsScreen(),
                             ),
                           );
                         },
