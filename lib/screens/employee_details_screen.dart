@@ -30,12 +30,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
     DropdownMenuItem(value: "Support", child: Text("Support")),
   ];
 
-  // @override
-  // void dispose() {
-  //   _nameController.dispose();
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +46,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
             children: [
               const SizedBox(height: 20),
 
-              // Full Name
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -75,7 +68,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
 
               const SizedBox(height: 20),
 
-              // Gender dropdown
               DropdownButtonFormField(
                 items: _genderItems,
                 onChanged: (value) => _selectedGender = value,
@@ -94,7 +86,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
 
               const SizedBox(height: 20),
 
-              // Department dropdown
               DropdownButtonFormField(
                 items: _departmentItems,
                 onChanged: (value) => _selectedDepartment = value,
@@ -113,7 +104,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
 
               const SizedBox(height: 30),
 
-              // Buttons Row
               Row(
                 children: [
                   Expanded(
@@ -149,7 +139,6 @@ class _EmployeeDetailsScreenState extends State<EmployeeDetailsScreen> {
 
               const SizedBox(height: 40),
 
-              // List Display
               if (_employees.isNotEmpty) ...[
                 ListView.builder(
                   shrinkWrap: true,
